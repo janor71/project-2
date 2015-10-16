@@ -1,0 +1,27 @@
+float right, up,left, down;
+float middle;
+
+void setup() {
+   size(700,700);
+      right= width-100;
+      up= 100;
+      left= 100;
+      down = height-100;
+      middle = width/2;
+      
+}
+  
+  void draw() {
+      background(245,171,111);
+      rectMode(CORNERS);
+      pooltable(right,up,left,down);
+  }
+  
+  // DRAWING TABLE
+   
+  void pooltable( float right, float up, float left, float down) {
+      fill(85,188,76);
+      strokeWeight(20);
+      stroke(126,98,75);
+      rect(right+75, up+25, left-75, down-25);
+  }
