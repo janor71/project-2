@@ -1,0 +1,85 @@
+// Setting variables
+
+float x = random(width,height);
+float y = random(width, height);
+float x1 = random(width, height);
+float y1 = random(width, height);
+float x2 = random(width, height);
+float y2 = random(width, height);
+
+
+float xspeed = random(1,2);
+float yspeed = random(1,2);
+float x1speed = random(1,2);
+float y1speed = random(1,2);
+float x2speed = random(1,2);
+float y2speed = random(1,2);
+
+void setup() {
+  size(320,240);
+ 
+
+}
+ void draw (){
+   background(255);
+   
+   //-- we need to call this functions in draw in order for them to work when we 
+   //-- call them on the bottom. here we are modulating 3 pieces
+   displayBall();
+   moveBall();
+   checkEdges();
+ }
+
+
+ //-- We want to add a function call display
+  
+  void displayBall() {
+ 
+     stroke(1);
+     fill(255,0,0);
+     ellipse(x,y,32,32);
+     fill(0,255,0);
+     ellipse(x1,y1,32,32);
+     fill(0,0,255);
+     ellipse(x2,y2,32,32);
+   
+  }
+  void moveBall(){
+     x = x + xspeed;
+     y = y + yspeed;
+     
+     x1 = x1 + x1speed;
+     y1 = y1 + y1speed;
+     
+     x2 = x2 + x2speed;
+     y2 = y2 + y2speed;
+      
+  }
+  
+  void checkEdges() {
+    
+      if (x > width || x<0) {
+     xspeed = xspeed *-1;
+    }
+      if (y > height || y<0) {
+     yspeed = yspeed *-1;
+    }
+      
+         
+      if (x1 > width || x1 < 0) {
+     x1speed = x1speed *-1;
+    }
+      if (y1 > height || y1 < 0) {
+     y1speed = y1speed *-1;
+    }
+      
+         
+      if (x2 > width || x2 < 0) {
+       x2speed = x2speed *-1;
+     }
+      if (y2 > height || y2 < 0) {
+       y2speed = y2speed *-1;
+      }
+    
+    
+  }
