@@ -23,16 +23,12 @@ void setup() {
  void draw (){
    background(255);
    
-   //-- we need to call this functions in draw in order for them to work when we 
-   //-- call them on the bottom. here we are modulating 3 pieces
    displayBall();
    moveBall();
-   checkEdges();
+   checkBounce();
  }
 
-
- //-- We want to add a function call display
-  
+//***DRAWING BALLS  
   void displayBall() {
  
      stroke(1);
@@ -44,6 +40,9 @@ void setup() {
      ellipse(x2,y2,32,32);
    
   }
+  
+  
+  // SOME ACTION
   void moveBall(){
      x = x + xspeed;
      y = y + yspeed;
@@ -56,7 +55,8 @@ void setup() {
       
   }
   
-  void checkEdges() {
+  BOUNCE OF BALLS
+  void checkBounce(){
     
       if (x > width || x<0) {
      xspeed = xspeed *-1;
