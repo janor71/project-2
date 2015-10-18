@@ -6,22 +6,26 @@ float x1 = random(width, height);
 float y1 = random(width, height);
 float x2 = random(width, height);
 float y2 = random(width, height);
+float x3 = random(width, height);
+float y3 = random(width, height);
 
 
-float xspeed = random(1,2);
-float yspeed = random(1,2);
-float x1speed = random(1,2);
-float y1speed = random(1,2);
-float x2speed = random(1,2);
-float y2speed = random(1,2);
+float xspeed = random(1,3);
+float yspeed = random(1,3);
+float x1speed = random(1,3);
+float y1speed = random(1,3);
+float x2speed = random(1,3);
+float y2speed = random(1,3);
+float x3speed = random(1,3);
+float y3speed = random(1,3);
 
 void setup() {
-  size(320,240);
+  size(400,400);
  
 
 }
  void draw (){
-   background(255);
+  background(152,94,32);
    
    displayBall();
    moveBall();
@@ -38,11 +42,13 @@ void setup() {
      ellipse(x1,y1,32,32);
      fill(0,0,255);
      ellipse(x2,y2,32,32);
+     fill(255,255,0);
+     ellipse(x3,y3,32,32);
    
   }
   
   
-  // SOME ACTION
+  
   void moveBall(){
      x = x + xspeed;
      y = y + yspeed;
@@ -52,10 +58,13 @@ void setup() {
      
      x2 = x2 + x2speed;
      y2 = y2 + y2speed;
+     
+     x3 = x3 + x3speed;
+     y3 = y3 + y3speed;
       
   }
   
-  BOUNCE OF BALLS
+  
   void checkBounce(){
     
       if (x > width || x<0) {
@@ -79,6 +88,14 @@ void setup() {
      }
       if (y2 > height || y2 < 0) {
        y2speed = y2speed *-1;
+       
+      }
+      
+        if (x3 > width || x3 < 0) {
+       x3speed = x3speed *-1;
+     }
+      if (y3 > height || y3 < 0) {
+       y3speed = y3speed *-1;
       }
     
     
