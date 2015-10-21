@@ -1,4 +1,9 @@
-// Rebeca Janowicz
+// PROJECT 2 Rebeca Janowicz
+// CST 112 EVENING
+
+String title= "REBECA JANOWICZ";
+String news = "Use 'r' key to reset.";
+String author = "Rebeca Janowicz";
 
 
 float right, up,left, down;
@@ -6,9 +11,9 @@ float middle;
 float ballX,ballY ,ballDX, ballDY;
 float circleX, circleY,circleDX, circleDY;
 float diskX, diskY, diskDX, diskDY;
-//float speed;
 
-  void setup() {
+
+ void setup() {
      size(700,700);
    
         right= width-100;
@@ -16,14 +21,16 @@ float diskX, diskY, diskDX, diskDY;
         left= 100;
         down = height-100;
         middle = width-500;
+        
       
  // LOCATION OF BALLS. 
+ 
         ballX=  random(middle,left);        ballY= random(up,down);
         circleX=  random(middle,left);      circleY= random(up,down);
         diskX=  random(middle,left);        diskY= random(up,down);
        
      
-    // SPEED OF BALLS
+ // SPEED OF BALLS
        
        ballDX= random(2);               ballDY= random(2);
        circleDX=  random(2);            circleDY= random(2);
@@ -32,35 +39,36 @@ float diskX, diskY, diskDX, diskDY;
 }
     
   void draw() {
-     // background(245,171,111);
-    //  rectMode(CORNERS);
       pooltable(right,up,left,down);
       balls();
       bounce();
       collisions();      
+      message();
+      
 }
     
   // DRAWING TABLE
    
   void pooltable( float right, float up, float left, float down) {
-    background(245,171,111);
-    rectMode(CORNERS);
-    fill(85,188,76);
-    strokeWeight(20);
-    stroke(126,98,75);
-    rect(right+75, up+25, left-75, down-25);
-    
+      background(245,171,111);
+      rectMode(CORNERS);
+      fill(85,188,76);
+      strokeWeight(20);
+      stroke(126,98,75);
+      rect(right+75, up+25, left-75, down-25);
+      
   }
   
   // DRAWING BALL;
+  
   void balls() {
-  noStroke();
-  fill(252,231,66);      
-  ellipse( ballX,ballY,40,40);
-  fill(27,31,170 );     
-  ellipse( circleX,circleY, 40,40 );
-  fill(240,52,19);      
-  ellipse( diskX,diskY, 40,40 );
+      noStroke();
+      fill(252,231,66);      
+      ellipse( ballX,ballY,40,40);
+      fill(27,31,170 );     
+      ellipse( circleX,circleY, 40,40 );
+      fill(240,52,19);      
+      ellipse( diskX,diskY, 40,40 );
     
   }
   
@@ -68,62 +76,62 @@ float diskX, diskY, diskDX, diskDY;
   
   void bounce() {
     
-   
-  ballX += ballDX;  
-    if ( ballX<left || ballX>right ) 
-    ballDX *= -1;
-  
-  ballY += ballDY;  
-    if ( ballY<up || ballY>down) 
-    ballDY *=  -1;
-    
-  circleX += circleDX;  
-    if ( circleX<left || circleX>right ) 
-    circleDX *= -1;
-    
-  circleY += circleDY;  
-    if ( circleY<up || circleY>down) 
-    circleDY *=  -1;
-   
-
-  diskX += diskDX; 
-    if ( diskX<left || diskX>right ) 
-    diskDX *= -1;
-  
-  diskY += diskDY;  
-    if ( diskY<up || diskY>down )
-    diskDY *=  -1;
+      ballX += ballDX;  {
+        if ( ballX < left || ballX > right ) 
+        ballDX *= -1;
+      }
+      ballY += ballDY;  {
+        if ( ballY < up || ballY > down) 
+        ballDY *=  -1;
+      }
+        
+      circleX += circleDX;  {
+        if ( circleX < left || circleX > right ) 
+        circleDX *= -1;
+      }
+      circleY += circleDY;  {
+        if ( circleY < up || circleY > down) 
+        circleDY *=  -1;
+       
+      }
+      diskX += diskDX; {
+        if ( diskX < left || diskX  > right ) 
+        diskDX *= -1;
+      
+      diskY += diskDY;  
+        if ( diskY < up || diskY > down )
+        diskDY *=  -1;
+      }
 }
+
+ // Exchange velocities between them!  
+ 
+ 
 void collisions() {
   float tmp;
   
-  // Exchange velocities between them!
-  if ( dist( circleX,circleY, ballX,ballY ) < 40 ) {
-    tmp=ballDX;  ballDX=circleDX;  circleDX=tmp;
-    tmp=ballDY;  ballDY=circleDY;  circleDY=tmp;
-  }
-    
-    if ( dist( ballX,ballY, diskX,diskY ) < 40 ) {
-    tmp=diskDX;  diskDX=ballDX;  ballDX=tmp;
-    tmp=diskDY;  diskDY= ballDY;  ballDY=tmp;
-  }
-     if ( dist( circleX,circleY, diskX,diskY ) < 40 ) {
-    tmp=diskDX;  diskDX=circleDX;  circleDX=tmp;
-    tmp=diskDY;  diskDY= circleDY;  circleDY=tmp;
+    if ( dist( circleX,circleY, ballX,ballY ) < 40 ) {
+      tmp=ballDX;  ballDX=circleDX;  circleDX=tmp;
+      tmp=ballDY;  ballDY=circleDY;  circleDY=tmp;
+    }
+      
+      if ( dist( ballX,ballY, diskX,diskY ) < 40 ) {
+      tmp=diskDX;  diskDX=ballDX;  ballDX=tmp;
+      tmp=diskDY;  diskDY= ballDY;  ballDY=tmp;
+    }
+       if ( dist( circleX,circleY, diskX,diskY ) < 40 ) {
+      tmp=diskDX;  diskDX=circleDX;  circleDX=tmp;
+      tmp=diskDY;  diskDY= circleDY;  circleDY=tmp;
      }
 }
-
-   // DRAWING BALL;
-  //void ball() {
-//  noStroke();
-//  fill(252,231,66);      
- // ellipse( ballX,ballY,40,40);
- // fill(27,31,170 );     
- // ellipse( circleX,circleY, 40,40 );
-  //fill(240,52,19);      
- // ellipse( diskX,diskY, 40,40 );
-    
- // } 
+void message() {
+  fill(0);
+  stroke(0);
+  text( title, width/2, 20 );
+  text( news, width/2, 40);
+  text( author, width/2, 60);
+}
+ 
  void reset() {
    setup();
  }
